@@ -1,7 +1,8 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { MapPin, Clock } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { MapPin, Clock, ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 const PACKAGES = [
   {
@@ -78,10 +79,16 @@ export default function UnforgettablePackages() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-500 max-w-2xl mx-auto"
+            className="text-gray-500 max-w-2xl mx-auto mb-6"
           >
             Carefully curated itineraries combining the very best of Sri Lanka&apos;s natural wonders, ancient history, and pristine coastline.
           </motion.p>
+          <Link
+            href="/plan-trip"
+            className="inline-flex items-center gap-2 bg-[#002b5c] hover:bg-[#001f44] text-white text-xs font-semibold px-6 py-3 rounded-full tracking-widest uppercase transition-all duration-300 shadow-md"
+          >
+            Custom Trip Planning <ArrowRight size={14} />
+          </Link>
         </div>
 
         {/* Bento Grid */}
@@ -94,26 +101,28 @@ export default function UnforgettablePackages() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={cardVariants}
-            className="md:col-span-1 md:row-span-2 relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
+            className="md:col-span-1 md:row-span-2 relative rounded-2xl overflow-hidden group shadow-xl"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PACKAGES[0].image} alt={PACKAGES[0].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-            
-            {/* Best Seller Badge */}
-            <div className="absolute top-6 left-6 bg-[#e6b150] text-[#1a2b4c] text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">
-              Best Seller
-            </div>
-
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="text-white text-2xl font-medium mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
-                {PACKAGES[0].title}
-              </h3>
-              <div className="flex items-center gap-4 text-white/80 text-sm font-medium">
-                <span className="flex items-center gap-1"><Clock size={16} /> {PACKAGES[0].duration}</span>
-                <span className="flex items-center gap-1"><MapPin size={16} /> {PACKAGES[0].location}</span>
+            <Link href="/plan-trip" className="block w-full h-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={PACKAGES[0].image} alt={PACKAGES[0].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              
+              {/* Best Seller Badge */}
+              <div className="absolute top-6 left-6 bg-[#e6b150] text-[#1a2b4c] text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">
+                Best Seller
               </div>
-            </div>
+
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-white text-2xl font-medium mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
+                  {PACKAGES[0].title}
+                </h3>
+                <div className="flex items-center gap-4 text-white/80 text-sm font-medium">
+                  <span className="flex items-center gap-1"><Clock size={16} /> {PACKAGES[0].duration}</span>
+                  <span className="flex items-center gap-1"><MapPin size={16} /> {PACKAGES[0].location}</span>
+                </div>
+              </div>
+            </Link>
           </motion.div>
 
           {/* Item 2 */}
@@ -123,20 +132,22 @@ export default function UnforgettablePackages() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={cardVariants}
-            className="md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
+            className="md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group shadow-xl"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PACKAGES[1].image} alt={PACKAGES[1].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="text-white text-xl font-medium mb-2 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
-                {PACKAGES[1].title}
-              </h3>
-              <div className="flex items-center gap-4 text-white/80 text-xs font-medium">
-                <span className="flex items-center gap-1"><Clock size={14} /> {PACKAGES[1].duration}</span>
-                <span className="flex items-center gap-1"><MapPin size={14} /> {PACKAGES[1].location}</span>
+            <Link href="/plan-trip" className="block w-full h-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={PACKAGES[1].image} alt={PACKAGES[1].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-white text-xl font-medium mb-2 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
+                  {PACKAGES[1].title}
+                </h3>
+                <div className="flex items-center gap-4 text-white/80 text-xs font-medium">
+                  <span className="flex items-center gap-1"><Clock size={14} /> {PACKAGES[1].duration}</span>
+                  <span className="flex items-center gap-1"><MapPin size={14} /> {PACKAGES[1].location}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </motion.div>
 
           {/* Item 3 */}
@@ -146,20 +157,22 @@ export default function UnforgettablePackages() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={cardVariants}
-            className="md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
+            className="md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group shadow-xl"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PACKAGES[2].image} alt={PACKAGES[2].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="text-white text-xl font-medium mb-2 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
-                {PACKAGES[2].title}
-              </h3>
-              <div className="flex items-center gap-4 text-white/80 text-xs font-medium">
-                <span className="flex items-center gap-1"><Clock size={14} /> {PACKAGES[2].duration}</span>
-                <span className="flex items-center gap-1"><MapPin size={14} /> {PACKAGES[2].location}</span>
+            <Link href="/plan-trip" className="block w-full h-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={PACKAGES[2].image} alt={PACKAGES[2].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-white text-xl font-medium mb-2 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
+                  {PACKAGES[2].title}
+                </h3>
+                <div className="flex items-center gap-4 text-white/80 text-xs font-medium">
+                  <span className="flex items-center gap-1"><Clock size={14} /> {PACKAGES[2].duration}</span>
+                  <span className="flex items-center gap-1"><MapPin size={14} /> {PACKAGES[2].location}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </motion.div>
 
           {/* Item 4 */}
@@ -169,20 +182,22 @@ export default function UnforgettablePackages() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={cardVariants}
-            className="md:col-span-2 md:row-span-1 relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl"
+            className="md:col-span-2 md:row-span-1 relative rounded-2xl overflow-hidden group shadow-xl"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PACKAGES[3].image} alt={PACKAGES[3].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="text-white text-2xl font-medium mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
-                {PACKAGES[3].title}
-              </h3>
-              <div className="flex items-center gap-4 text-white/80 text-sm font-medium">
-                <span className="flex items-center gap-1"><Clock size={16} /> {PACKAGES[3].duration}</span>
-                <span className="flex items-center gap-1"><MapPin size={16} /> {PACKAGES[3].location}</span>
+            <Link href="/plan-trip" className="block w-full h-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={PACKAGES[3].image} alt={PACKAGES[3].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-white text-2xl font-medium mb-3 leading-tight" style={{ fontFamily: "var(--font-cormorant, serif)" }}>
+                  {PACKAGES[3].title}
+                </h3>
+                <div className="flex items-center gap-4 text-white/80 text-sm font-medium">
+                  <span className="flex items-center gap-1"><Clock size={16} /> {PACKAGES[3].duration}</span>
+                  <span className="flex items-center gap-1"><MapPin size={16} /> {PACKAGES[3].location}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </motion.div>
 
         </div>

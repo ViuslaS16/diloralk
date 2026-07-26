@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 export default function TailorMade() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,12 +44,12 @@ export default function TailorMade() {
             Our destination specialists will meticulously craft a bespoke itinerary that matches your pace, style, and desires.
           </p>
           
-          <button className="flex items-center gap-2 text-[#00529b] font-medium group hover:underline">
+          <Link href="/plan-trip" className="inline-flex items-center gap-2 text-[#00529b] font-medium group hover:underline">
             <span className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors">
               <ArrowRight size={18} />
             </span>
             Start Planning
-          </button>
+          </Link>
         </motion.div>
 
         {/* Right Side: Staggered Parallax Images */}

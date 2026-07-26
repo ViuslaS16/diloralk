@@ -285,7 +285,6 @@ export default async function DestinationDetailPage({
           src={dest.heroImage} 
           alt={dest.name} 
           className="absolute inset-0 w-full h-full object-cover"
-          priority
         />
         {/* Soft Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />

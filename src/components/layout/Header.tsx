@@ -92,26 +92,6 @@ export default function Header() {
     {
       label: t('contact'),
       href: '/contact-us',
-      columns: [
-        {
-          title: 'About Us',
-          links: [
-            { label: 'Our Story', href: '/about-us' },
-            { label: 'Why Book With Us', href: '/#why-book' },
-            { label: 'Sustainability', href: '/#sustainability' },
-            { label: 'Guest Reviews', href: '/#reviews' },
-            { label: 'FAQs', href: '/#faq' }
-          ]
-        },
-        {
-          title: 'Get In Touch',
-          links: [
-            { label: 'Contact Us', href: '/contact-us' },
-            { label: 'Office Location', href: '/contact-us#location' },
-            { label: 'Plan My Trip', href: '/plan-trip' }
-          ]
-        }
-      ]
     }
   ];
 
