@@ -20,6 +20,7 @@ export default function PlanTripForm() {
     'Heritage & Culture',
     'Wildlife & Safaris',
     'Beach & Relaxation',
+    'Ramayana Trail',
     'Scenic Train & Hills',
     'Honeymoon & Romance',
     'Wellness & Ayurveda'
@@ -205,7 +206,7 @@ export default function PlanTripForm() {
           <label className="block text-xs uppercase tracking-wider text-gray-500 font-medium mb-3">
             Interests & Preferred Travel Style
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {travelStyleOptions.map(style => {
               const isSelected = formData.travelStyle.includes(style);
               return (

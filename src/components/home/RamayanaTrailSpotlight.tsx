@@ -9,7 +9,7 @@ export default function RamayanaTrailSpotlight() {
       <div className="absolute right-0 top-0 w-1/2 h-full opacity-30 mix-blend-overlay hidden lg:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src="https://images.unsplash.com/photo-1625078512595-65fc06ccb392?q=80&w=2070&auto=format&fit=crop" 
+          src="https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/destination_thumbnail_kandy.jpg" 
           alt="Ramayana Trail Background" 
           className="w-full h-full object-cover grayscale"
         />

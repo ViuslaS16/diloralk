@@ -6,41 +6,42 @@ export default async function PlanTripPage() {
   const t = await getTranslations('Navigation');
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <div className="pt-32 pb-24 min-h-screen bg-[var(--background)]">
       
-      {/* 1. Full-Bleed Hero Section with Image & Overlay */}
-      <section className="relative w-full h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-scenic-train-journey.jpg"
-          alt="Sri Lanka Scenic Train & Highlands"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-black/50 to-black/70" />
+      {/* 1. Hero Banner Card */}
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl mb-12">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[340px] md:h-[400px] flex items-center justify-center p-8 text-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-scenic-train-journey.jpg"
+            alt="Sri Lanka Scenic Train & Highlands"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#002b5c]/95 via-[#002b5c]/60 to-black/40" />
 
-        <div className="relative z-10 container mx-auto px-6 md:px-12 text-center max-w-4xl pt-20">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-widest mb-6 border border-white/30">
-            <Sparkles size={14} className="text-[#e6b150]" />
-            Bespoke Travel Concierge
+          <div className="relative z-10 max-w-3xl text-white">
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-widest mb-4 border border-white/20">
+              <Sparkles size={14} className="text-[#e6b150]" />
+              Bespoke Travel Concierge
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-light mb-4 leading-tight text-white" style={{ fontFamily: 'var(--font-serif)' }}>
+              Plan Your Tailor-Made Escape
+            </h1>
+            
+            <p className="text-sm md:text-base font-light leading-relaxed text-white/90 max-w-2xl mx-auto">
+              Tell us about your dream Sri Lankan vacation. Our travel specialists will craft a customized itinerary tailored to your pace, style, and desires.
+            </p>
           </div>
-          
-          <h1 className="text-4xl md:text-6xl font-light mb-4 text-white leading-tight" style={{ fontFamily: 'var(--font-serif)' }}>
-            Plan Your Tailor-Made Escape
-          </h1>
-          
-          <p className="text-base md:text-lg font-light leading-relaxed text-white/90 max-w-2xl mx-auto">
-            Tell us about your dream Sri Lankan vacation. Our travel specialists will craft a customized itinerary tailored to your pace, style, and desires.
-          </p>
         </div>
-      </section>
+      </div>
 
       {/* 2. Content Body */}
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl pb-24 -mt-16 relative z-20">
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         
         {/* Feature Highlights Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-gray-100 shadow-lg flex items-start gap-4">
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-md flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-slate-blue)] flex items-center justify-center shrink-0">
               <Compass size={24} />
             </div>
@@ -52,7 +53,7 @@ export default async function PlanTripPage() {
             </div>
           </div>
 
-          <div className="bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-gray-100 shadow-lg flex items-start gap-4">
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-md flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-slate-blue)] flex items-center justify-center shrink-0">
               <HeartHandshake size={24} />
             </div>
@@ -64,7 +65,7 @@ export default async function PlanTripPage() {
             </div>
           </div>
 
-          <div className="bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-gray-100 shadow-lg flex items-start gap-4">
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-md flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-slate-blue)] flex items-center justify-center shrink-0">
               <ShieldCheck size={24} />
             </div>
@@ -85,7 +86,7 @@ export default async function PlanTripPage() {
             <PlanTripForm />
           </div>
 
-          {/* Side Showcase Column with Rich Images & Proof */}
+          {/* Side Showcase Column */}
           <div className="lg:col-span-4 space-y-6">
             
             {/* Image Card 1: Sigiriya Fortress */}

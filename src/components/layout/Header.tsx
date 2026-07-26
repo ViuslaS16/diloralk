@@ -81,13 +81,7 @@ export default function Header() {
     },
     {
       label: t('ramayana_trail'),
-      href: '/#ramayana-spotlight',
-      subLinks: [
-        { label: 'The Epic Trail', desc: 'Retrace millenia-old legends', href: '/#ramayana-spotlight' },
-        { label: 'Sacred Temples', desc: 'Visit Sita Amman temple & more', href: '/#ramayana-spotlight' },
-        { label: 'Mystical Places', desc: 'Explore Rumassala and Sanjeevani drops', href: '/#ramayana-spotlight' },
-        { label: 'Epic Itinerary', desc: 'View our curated 10-day pilgrimage tour', href: '/#packages' }
-      ]
+      href: '/ramayana-trail',
     },
     {
       label: t('contact'),
@@ -335,6 +329,16 @@ export default function Header() {
                   </div>
                 );
               })}
+              {/* Mobile CTA Button */}
+              <div className="pt-4 mt-4 border-t border-gray-100">
+                <Link
+                  href="/plan-trip"
+                  className="w-full inline-flex items-center justify-center bg-[#002b5c] text-white py-3.5 rounded-xl text-xs uppercase tracking-widest font-semibold text-center shadow-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t('plan_trip')}
+                </Link>
+              </div>
             </nav>
           </motion.div>
         )}

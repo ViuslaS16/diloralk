@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "@/i18n/routing";
 
 export default function AboutCompany() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,21 +11,18 @@ export default function AboutCompany() {
     offset: ["start end", "end start"],
   });
 
-  // 3D Parallax image translations
-  // The first image moves up faster than the second image
   const img1Y = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const img2Y = useTransform(scrollYProgress, [0, 1], [150, -50]);
 
-  // Text fade-in and slide-up
   const textY = useTransform(scrollYProgress, [0, 0.4], [50, 0]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
 
   return (
-    <section ref={containerRef} className="py-32 bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center gap-16">
         
         {/* Left Side: Staggered Parallax Images */}
-        <div className="lg:w-1/2 relative h-[500px] lg:h-[600px] w-full flex justify-center lg:justify-start">
+        <div className="lg:w-1/2 relative h-[380px] sm:h-[500px] lg:h-[600px] w-full flex justify-center lg:justify-start">
           <motion.div 
             className="absolute left-0 lg:left-10 top-20 w-[60%] lg:w-[280px] h-[350px] lg:h-[400px] rounded-t-full rounded-b-2xl overflow-hidden shadow-2xl z-20"
             style={{ y: img1Y }}
@@ -70,9 +68,9 @@ export default function AboutCompany() {
             Let our experts craft a journey tailored just for you, combining luxury, authenticity, and seamless service every step of the way.
           </p>
 
-          <button className="px-8 py-3 bg-[#002b5c] text-white font-medium rounded-full hover:bg-[#004080] transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <Link href="/about-us" className="inline-block px-8 py-3 bg-[#002b5c] text-white font-medium rounded-full hover:bg-[#004080] transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             Discover Our Story
-          </button>
+          </Link>
         </motion.div>
 
       </div>

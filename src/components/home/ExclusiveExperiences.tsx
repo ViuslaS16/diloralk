@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Diamond, Briefcase, Star, ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 const EXPERIENCES = [
   {
@@ -10,6 +11,7 @@ const EXPERIENCES = [
     desc: "Helicopter transfers, boutique villa buy-outs, and private dining under the stars. Experience the absolute pinnacle of Sri Lankan luxury.",
     color: "bg-[#f4ebe1]",
     textColor: "text-[#8b5e34]",
+    href: "/plan-trip"
   },
   {
     icon: Briefcase,
@@ -17,6 +19,7 @@ const EXPERIENCES = [
     desc: "Seamless execution of corporate retreats, incentive tours, and large-scale conferences. We handle the logistics so you can focus on the business.",
     color: "bg-[#e8ecef]",
     textColor: "text-[#2b4c5e]",
+    href: "/plan-trip"
   },
   {
     icon: Star,
@@ -24,6 +27,7 @@ const EXPERIENCES = [
     desc: "Fast-track airport assistance, private security, and exclusive access to sites before they open to the public. Discretion and perfection guaranteed.",
     color: "bg-[#efe8e1]",
     textColor: "text-[#5e4c2b]",
+    href: "/plan-trip"
   },
 ];
 
@@ -76,24 +80,26 @@ export default function ExclusiveExperiences() {
               className={`${exp.color} p-10 rounded-2xl flex flex-col h-full cursor-pointer transition-shadow duration-300`}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <div className={`w-14 h-14 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm ${exp.textColor}`}>
-                <exp.icon size={24} />
-              </div>
-              
-              <h3 
-                className="text-2xl font-semibold text-gray-900 mb-4"
-                style={{ fontFamily: "var(--font-cormorant, serif)" }}
-              >
-                {exp.title}
-              </h3>
-              
-              <p className="text-gray-600 leading-relaxed mb-8 font-light flex-grow">
-                {exp.desc}
-              </p>
-              
-              <div className={`flex items-center gap-2 font-medium ${exp.textColor} mt-auto`}>
-                Learn More <ArrowRight size={16} />
-              </div>
+              <Link href={exp.href} className="flex flex-col h-full">
+                <div className={`w-14 h-14 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm ${exp.textColor}`}>
+                  <exp.icon size={24} />
+                </div>
+                
+                <h3 
+                  className="text-2xl font-semibold text-gray-900 mb-4"
+                  style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                >
+                  {exp.title}
+                </h3>
+                
+                <p className="text-gray-600 leading-relaxed mb-8 font-light flex-grow">
+                  {exp.desc}
+                </p>
+                
+                <div className={`flex items-center gap-2 font-medium ${exp.textColor} mt-auto`}>
+                  Learn More <ArrowRight size={16} />
+                </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

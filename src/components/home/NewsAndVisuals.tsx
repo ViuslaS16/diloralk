@@ -1,59 +1,70 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Camera } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 const NEWS = [
   {
-    title: "Dilora Travales wins Best Tour Operator at World Travel Awards 2025",
+    title: "Dilora Travales wins Best Luxury Tour Operator 2025",
     date: "March 15, 2026",
-    image: "https://picsum.photos/seed/news-award/800/600",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/destination_sigiriya.jpg",
     isFeatured: true,
   },
   {
-    title: "New Luxury Train Route Opens from Kandy to Ella",
+    title: "New First-Class Observation Train Route Kandy to Ella",
     date: "February 28, 2026",
-    image: "https://picsum.photos/seed/news-train/400/300",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-scenic-train-journey.jpg",
   },
   {
-    title: "Top 10 Hidden Beaches to Visit in Sri Lanka This Summer",
+    title: "Top 10 Hidden Tropical Beaches in Southern Sri Lanka",
     date: "February 12, 2026",
-    image: "https://picsum.photos/seed/news-beach/400/300",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/destination_thumbnail_mirissa.jpg",
   },
   {
-    title: "Sustainable Tourism: Our New Initiative in Yala National Park",
+    title: "Eco Tourism & Elephant Conservation in Yala National Park",
     date: "January 30, 2026",
-    image: "https://picsum.photos/seed/news-yala/400/300",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-wildlife-adventure.jpg",
   },
 ];
 
 const STORIES = [
-  "https://picsum.photos/seed/st1/400/400",
-  "https://picsum.photos/seed/st2/400/400",
-  "https://picsum.photos/seed/st3/400/400",
-  "https://picsum.photos/seed/st4/400/400",
-  "https://picsum.photos/seed/st5/400/400",
-  "https://picsum.photos/seed/st6/400/400",
-];
-
-const PARTNERS = [
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/TripAdvisor_Logo_2020.svg/512px-TripAdvisor_Logo_2020.svg.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/480px-Facebook_logo_%28square%29.png",
+  {
+    title: "Coconut Tree Hill, Mirissa",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/destination_thumbnail_mirissa.jpg"
+  },
+  {
+    title: "Nine Arches Scenic Demodara Train",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-scenic-train-journey.jpg"
+  },
+  {
+    title: "Sigiriya Ancient Rock Fortress",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/destination_sigiriya.jpg"
+  },
+  {
+    title: "Wild Elephant Safari in Yala",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-wildlife-adventure.jpg"
+  },
+  {
+    title: "Misty Highlands & Tea Gardens",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-about-sri-lanka-tea-plantations.jpg"
+  },
+  {
+    title: "",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/destination_thumbnail_kandy.jpg"
+  },
+  {
+    title: "Pristine Golden Coast Beach",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-ultimate-beach-escape.jpg"
+  },
+  {
+    title: "Tropical Coastal Getaway",
+    image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-about-sri-lanka-tropical-beaches.jpg"
+  }
 ];
 
 export default function NewsAndVisuals() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
-  
-  // Parallax horizontal scroll for the visual stories strip
-  const xLeft = useTransform(smoothProgress, [0, 1], ["0%", "-20%"]);
   
   const featured = NEWS[0];
   const others = NEWS.slice(1);
@@ -73,14 +84,14 @@ export default function NewsAndVisuals() {
           >
             Our Latest<br />News
           </motion.h2>
-          <button className="hidden md:inline-flex items-center gap-2 px-6 py-2 border border-[#00529b] text-[#00529b] rounded-full font-medium hover:bg-[#00529b] hover:text-white transition-colors">
+          <Link href="/plan-trip" className="hidden md:inline-flex items-center gap-2 px-6 py-2 border border-[#00529b] text-[#00529b] rounded-full font-medium hover:bg-[#00529b] hover:text-white transition-colors">
             View All News <ArrowRight size={16} />
-          </button>
+          </Link>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           
-          {/* Featured News (3D Hover Effect) */}
+          {/* Featured News */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -90,26 +101,28 @@ export default function NewsAndVisuals() {
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
             className="lg:w-1/2 relative rounded-2xl overflow-hidden cursor-pointer h-[400px] lg:h-[500px] shadow-lg group"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={featured.image} 
-              alt={featured.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-            
-            <div className="absolute bottom-8 left-8 right-8" style={{ transform: "translateZ(30px)" }}>
-              <div className="flex items-center gap-2 text-white/80 text-sm mb-3 font-medium">
-                <Calendar size={16} />
-                <span>{featured.date}</span>
+            <Link href="/plan-trip" className="block w-full h-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src={featured.image} 
+                alt={featured.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+              
+              <div className="absolute bottom-8 left-8 right-8" style={{ transform: "translateZ(30px)" }}>
+                <div className="flex items-center gap-2 text-white/80 text-sm mb-3 font-medium">
+                  <Calendar size={16} />
+                  <span>{featured.date}</span>
+                </div>
+                <h3 
+                  className="text-white text-3xl md:text-4xl font-medium leading-tight group-hover:text-blue-300 transition-colors"
+                  style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                >
+                  {featured.title}
+                </h3>
               </div>
-              <h3 
-                className="text-white text-3xl md:text-4xl font-medium leading-tight group-hover:text-blue-300 transition-colors"
-                style={{ fontFamily: "var(--font-cormorant, serif)" }}
-              >
-                {featured.title}
-              </h3>
-            </div>
+            </Link>
           </motion.div>
 
           {/* Other News List */}
@@ -121,28 +134,30 @@ export default function NewsAndVisuals() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex flex-col sm:flex-row items-center gap-6 group cursor-pointer"
+                className="group cursor-pointer"
               >
-                <div className="w-full sm:w-40 h-32 shrink-0 rounded-xl overflow-hidden shadow-sm">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src={news.image} 
-                    alt={news.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 text-gray-400 text-xs mb-2 font-medium">
-                    <Calendar size={14} />
-                    <span>{news.date}</span>
+                <Link href="/plan-trip" className="flex flex-col sm:flex-row items-center gap-6">
+                  <div className="w-full sm:w-40 h-32 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src={news.image} 
+                      alt={news.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
-                  <h3 
-                    className="text-[#002b5c] text-xl font-medium leading-snug group-hover:text-[#00529b] transition-colors line-clamp-2"
-                    style={{ fontFamily: "var(--font-cormorant, serif)" }}
-                  >
-                    {news.title}
-                  </h3>
-                </div>
+                  <div>
+                    <div className="flex items-center gap-2 text-gray-400 text-xs mb-2 font-medium">
+                      <Calendar size={14} />
+                      <span>{news.date}</span>
+                    </div>
+                    <h3 
+                      className="text-[#002b5c] text-xl font-medium leading-snug group-hover:text-[#00529b] transition-colors line-clamp-2"
+                      style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                    >
+                      {news.title}
+                    </h3>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -150,7 +165,7 @@ export default function NewsAndVisuals() {
         </div>
       </div>
 
-      {/* --- Visual Stories --- */}
+      {/* --- Visual Stories Infinite Auto-Scrolling Marquee --- */}
       <div className="relative mt-20">
         
         {/* Background Watermark */}
@@ -164,47 +179,53 @@ export default function NewsAndVisuals() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 mb-6 shadow-lg shadow-purple-500/30">
             <Camera size={24} className="text-white" />
           </div>
+          <h3 
+            className="text-2xl md:text-3xl text-[#002b5c] font-medium tracking-wide"
+            style={{ fontFamily: "var(--font-cormorant, serif)" }}
+          >
+            Stories From Our Travelers
+          </h3>
         </div>
 
-        {/* 3D Scrolling Image Strip */}
-        <div className="w-full overflow-hidden relative z-10 mb-20" style={{ perspective: "1000px" }}>
+        {/* Infinite Auto-Scroll Strip */}
+        <div className="w-full overflow-hidden relative z-10 mb-20">
           <motion.div 
-            className="flex w-[200%] md:w-[150%] gap-2"
-            style={{ x: xLeft }}
+            className="flex gap-6 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            }}
           >
-            {STORIES.map((src, i) => (
+            {[...STORIES, ...STORIES].map((story, i) => (
               <motion.div 
                 key={i}
-                whileHover={{ scale: 0.95, opacity: 0.8, rotateY: 5 }}
-                className="w-1/6 md:w-1/6 aspect-square min-w-[150px] cursor-pointer rounded-lg overflow-hidden shadow-md"
+                whileHover={{ scale: 1.04 }}
+                className="w-[280px] h-[360px] shrink-0 cursor-pointer rounded-2xl overflow-hidden shadow-xl relative group"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={src} 
-                  alt={`Social story ${i + 1}`}
-                  className="w-full h-full object-cover"
-                />
+                <Link href="/plan-trip" className="block w-full h-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={story.image} 
+                    alt={story.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                  
+                  <div className="absolute bottom-5 left-5 right-5 text-white">
+                    <p className="text-[10px] uppercase tracking-widest text-[#e6b150] font-bold mb-1">
+                      Visual Story
+                    </p>
+                    <h4 className="text-sm font-medium leading-snug" style={{ fontFamily: "var(--font-serif)" }}>
+                      {story.title}
+                    </h4>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
-        </div>
-
-        {/* Partners / Associations */}
-        <div className="max-w-4xl mx-auto px-4 text-center mt-24 pb-10 border-b border-gray-100 relative z-10">
-          <h3 
-            className="text-[#002b5c] font-semibold uppercase tracking-widest text-sm mb-8"
-            style={{ fontFamily: "var(--font-inter, sans-serif)" }}
-          >
-            Your adventures in Sri Lanka await
-          </h3>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-            {PARTNERS.map((partner, i) => (
-              <div key={i} className="h-8 md:h-10">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={partner} alt={`Partner ${i}`} className="h-full object-contain" />
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "@/i18n/routing";
 
 export default function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,7 +13,6 @@ export default function Hero3D() {
   });
 
   // Parallax effects
-  // The background scales up and moves down slightly as we scroll
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   
@@ -34,8 +34,7 @@ export default function Hero3D() {
           y: backgroundY,
         }}
       >
-        <div className="absolute inset-0 bg-black/40 z-10" /> {/* Dark Overlay */}
-        {/* Video Background instead of Image */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
         <video 
           autoPlay 
           loop 
@@ -75,17 +74,21 @@ export default function Hero3D() {
           Experience the ultimate island getaway with exclusive luxury tours tailored just for you.
         </motion.p>
 
-        <motion.button 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-          className="flex items-center gap-3 text-white text-sm font-semibold tracking-widest uppercase hover:text-gray-200 transition-colors group"
         >
-          <span className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg group-hover:bg-gray-200 transition-colors">
-            +
-          </span>
-          EXPLORE
-        </motion.button>
+          <Link
+            href="/destinations"
+            className="flex items-center gap-3 text-white text-sm font-semibold tracking-widest uppercase hover:text-gray-200 transition-colors group"
+          >
+            <span className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg group-hover:bg-gray-200 transition-colors">
+              +
+            </span>
+            EXPLORE
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );

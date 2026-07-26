@@ -2,12 +2,13 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 const CATEGORIES = [
-  { id: 1, title: "Beach Holidays", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-category-beach-holidays.jpg" },
-  { id: 2, title: "Heritage Tours", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-category-heritage-tours.jpg" },
-  { id: 3, title: "Wildlife Safaris", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-category-wildlife-safaris.jpg" },
-  { id: 4, title: "Romantic Getaways", image: "https://picsum.photos/seed/cat-romantic/400/600" },
+  { id: 1, title: "Beach Holidays", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-category-beach-holidays.jpg", href: "/destinations/mirissa" },
+  { id: 2, title: "Heritage Tours", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-category-heritage-tours.jpg", href: "/destinations/sigiriya" },
+  { id: 3, title: "Wildlife Safaris", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-category-wildlife-safaris.jpg", href: "/destinations/yala" },
+  { id: 4, title: "Romantic Getaways", image: "https://pub-b417daeb2f2d4ba095744c832cdd926c.r2.dev/dilora-package-ultimate-beach-escape.jpg", href: "/destinations/bentota" },
 ];
 
 export default function TourCategories() {
@@ -18,10 +19,7 @@ export default function TourCategories() {
     offset: ["start end", "end start"],
   });
 
-  // Adding some spring physics for smoother 3D rotation
   const smoothY = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
-  
-  // Rotate the whole container on X-axis slightly as it scrolls past
   const rotateX = useTransform(smoothY, [0, 0.5, 1], [15, 0, -10]);
 
   return (
@@ -45,9 +43,9 @@ export default function TourCategories() {
               From sun-kissed beaches to misty mountains, explore Sri Lanka your way.
             </p>
           </motion.div>
-          <button className="hidden md:flex items-center gap-2 text-[#00529b] font-medium hover:underline">
+          <Link href="/destinations" className="hidden md:flex items-center gap-2 text-[#00529b] font-medium hover:underline">
             View All Categories <ArrowRight size={18} />
-          </button>
+          </Link>
         </div>
 
         {/* 3D Scrolling Grid Container */}
@@ -67,38 +65,47 @@ export default function TourCategories() {
                 scale: 1.05, 
                 rotateY: 5, 
                 rotateX: -5,
-                translateZ: 30, // 3D pop effect
+                translateZ: 30,
                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
               }}
-              className="relative h-[450px] rounded-2xl overflow-hidden cursor-pointer group"
+              className="relative h-[320px] sm:h-[400px] lg:h-[450px] rounded-2xl overflow-hidden cursor-pointer group"
               style={{ transformStyle: "preserve-3d" }}
             >
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500 z-10" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#002b5c]/90 via-transparent to-transparent z-10" />
-              
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src={cat.image} 
-                alt={cat.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
+              <Link href={cat.href} className="block w-full h-full">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002b5c]/90 via-transparent to-transparent z-10" />
+                
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src={cat.image} 
+                  alt={cat.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
 
-              <div 
-                className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end transform transition-transform duration-500 group-hover:translate-y-[-10px]"
-              >
-                <h3 
-                  className="text-white text-2xl font-medium leading-tight"
-                  style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                <div 
+                  className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end transform transition-transform duration-500 group-hover:translate-y-[-10px]"
                 >
-                  {cat.title}
-                </h3>
-                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <ArrowRight size={18} />
+                  <h3 
+                    className="text-white text-2xl font-medium leading-tight"
+                    style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                  >
+                    {cat.title}
+                  </h3>
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <ArrowRight size={18} />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile View All Button */}
+        <div className="mt-8 text-center md:hidden">
+          <Link href="/destinations" className="inline-flex items-center gap-2 text-[#00529b] font-medium hover:underline">
+            View All Categories <ArrowRight size={18} />
+          </Link>
+        </div>
 
       </div>
     </section>
