@@ -29,6 +29,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     top: 0px !important;
+    position: static !important;
   }
   
   /* Minimalist Swiss design rules: extensive negative space, clean typography */
@@ -39,18 +40,25 @@
   }
 }
 
-/* Google Translate Clean Styling Overrides */
-.goog-te-banner-frame.skiptranslate,
-.goog-te-banner-frame {
-  display: none !important;
-}
-
+/* Google Translate Top Banner & Tooltip Complete Suppression */
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame,
+.VIpgJd-yA0fs-yADvfb-w3A2ld,
+.VIpgJd-yA0fs-yADvfb-OooF2b,
+.VIpgJd-yA0fs-yADvfb-s2ad2e,
 #goog-gt-tt,
 .goog-te-balloon-frame,
-.goog-text-highlight {
+.goog-text-highlight,
+body > .skiptranslate,
+body > iframe.skiptranslate {
   display: none !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  top: -9999px !important;
 }
 
 .goog-te-gadget {
