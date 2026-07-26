@@ -1,0 +1,21 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "destinations": "Destinations",
+    "tour_packages": "Tour Packages",
+    "ramayana_trail": "The Ramayana Trail",
+    "activities": "Activities",
+    "events_mice": "Events & MICE",
+    "blog": "Blog",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "contact": "Contact Us",
+    "plan_trip": "Plan My Trip"
+  },
+  "Hero": {
+    "title": "Experience Sri Lanka",
+    "subtitle": "Discover luxury and heritage on the island of serendipity."
+  }
+}

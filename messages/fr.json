@@ -1,0 +1,21 @@
+{
+  "Navigation": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "destinations": "Destinations",
+    "tour_packages": "Forfaits",
+    "ramayana_trail": "La Piste de Ramayana",
+    "activities": "Activités",
+    "events_mice": "Événements & MICE",
+    "blog": "Blog",
+    "gallery": "Galerie",
+    "reviews": "Avis",
+    "contact": "Contactez-Nous",
+    "plan_trip": "Planifier Mon Voyage"
+  },
+  "Hero": {
+    "title": "Vivez le Sri Lanka",
+    "subtitle": "Découvrez le luxe et l'héritage sur l'île de la sérendipité."
+  }
+}
